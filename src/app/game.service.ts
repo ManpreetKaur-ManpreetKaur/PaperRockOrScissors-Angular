@@ -29,54 +29,40 @@ export class GameService {
   play(userChoice: Choice) {
     this.userChoice = userChoice
     this.computerChoice = GameService.randomChoice()
-    switch (this.userChoice) {
-      case Choice.PAPER: {
-        switch (this.computerChoice) {
-          case Choice.PAPER: {
-            this.gameResult = GameResult.REPLAY;
-            break;
-          }
-          case Choice.ROCK: {
-            this.gameResult = GameResult.USER_WINS;
-            break;
-          }
-          case Choice.SCISSORS: {
-            this.gameResult = GameResult.COMPUTER_WINS;
-          }
+    this.gameResult = GameService.getResult(userChoice,this.computerChoice)
+  }
+
+  static getResult(userChoice: Choice, computerChoice: Choice): GameResult {
+    switch (userChoice) {
+      case Choice.PAPER:
+        switch (computerChoice) {
+          case Choice.PAPER:
+            return GameResult.REPLAY;
+          case Choice.ROCK:
+            return GameResult.USER_WINS;
+          default: // Choice.SCISSORS:
+            return GameResult.COMPUTER_WINS;
         }
-        break;
-      }
-      case Choice.ROCK: {
-        switch (this.computerChoice) {
-          case Choice.PAPER: {
-            this.gameResult = GameResult.COMPUTER_WINS;
-            break;
-          }
-          case Choice.ROCK: {
-            this.gameResult = GameResult.REPLAY;
-            break;
-          }
-          case Choice.SCISSORS: {
-            this.gameResult = GameResult.USER_WINS;
-          }
+      case Choice.ROCK:
+        switch (computerChoice) {
+          case Choice.PAPER:
+            return GameResult.COMPUTER_WINS;
+          case Choice.ROCK:
+            return GameResult.REPLAY;
+          default: // Choice.SCISSORS:
+            return GameResult.USER_WINS;
         }
-        break;
-      }
       case Choice.SCISSORS: {
-        switch (this.computerChoice) {
-          case Choice.PAPER: {
-            this.gameResult = GameResult.USER_WINS;
-            break;
-          }
-          case Choice.ROCK: {
-            this.gameResult = GameResult.COMPUTER_WINS;
-            break;
-          }
-          case Choice.SCISSORS: {
-            this.gameResult = GameResult.REPLAY;
+        switch (computerChoice) {
+          case Choice.PAPER:
+            return GameResult.USER_WINS;
+          case Choice.ROCK:
+            return GameResult.COMPUTER_WINS;
+          default: // Choice.SCISSORS:
+            return GameResult.REPLAY;
           }
         }
       }
     }
-  }
+
 }

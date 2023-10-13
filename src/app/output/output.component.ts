@@ -22,15 +22,12 @@ export class OutputComponent {
         break;
       }
       case GameResult.COMPUTER_WINS: {
-        this.gameResult = "Computer won!";
+        this.gameResult = "Computer won";
         break;
       }
       case GameResult.REPLAY: {
         this.gameResult = "Replay";
         break;
-      }
-      default: {
-        this.gameResult = "Unknown";
       }
     }
   }
