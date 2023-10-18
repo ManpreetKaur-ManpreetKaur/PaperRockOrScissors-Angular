@@ -20,7 +20,6 @@ export class InputComponent {
     console.log("setUserChoice() is called")
     console.log("choice = " + choice)
     this.userChoice = choice;
-
   }
 
   play() {
