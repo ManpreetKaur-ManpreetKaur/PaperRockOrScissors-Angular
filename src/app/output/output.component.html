@@ -1,18 +1,23 @@
 <main>
   <h2>Game Result</h2>
   <div class="choice-container">
-    <img src="/assets/images/{{userChoice}}.png" class="choice" alt="paper">
+    <img src="/assets/images/{{gameData.userChoice}}.png" class="choice" alt="paper">
     versus
-    <img src="/assets/images/{{computerChoice}}.png" class="choice" alt="rock">
+    <img src="/assets/images/{{gameData.computerChoice}}.png" class="choice" alt="rock">
   </div>
   <p>
-    <label>Your choice:</label>&nbsp;{{userChoice}}
+    <label>Your choice:</label>&nbsp;{{gameData.userChoice}}
   </p>
   <p>
-    <label>Computer choice:</label>&nbsp;{{computerChoice}}
+    <label>Computer choice:</label>&nbsp;{{gameData.computerChoice}}
   </p>
   <p>
-    <label>Result:</label>&nbsp;<span class="result">{{gameResult}}</span>
+    <label>Result:</label>&nbsp;
+    <span class="result" [ngSwitch]="gameData.gameResult">
+      <ng-container *ngSwitchCase="GameResult.USER_WINS">You Won!</ng-container>
+      <ng-container *ngSwitchCase="GameResult.COMPUTER_WINS">Computer wins</ng-container>
+      <ng-container *ngSwitchCase="GameResult.REPLAY">Replay</ng-container>
+    </span>
   </p>
   <p>
     <a routerLink="/input" (click)="replay()">Play Again!</a>
