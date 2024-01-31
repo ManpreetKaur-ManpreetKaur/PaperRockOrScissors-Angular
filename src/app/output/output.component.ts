@@ -14,26 +14,9 @@ export class OutputComponent {
 
   constructor(private gameService: GameService) {
     this.gameData = gameService.gameData;
-
-    // this.userChoice = gameService.userChoice;
-    // this.computerChoice = gameService.computerChoice;
-    // switch (gameService.gameResult){
-    //   case GameResult.USER_WINS: {
-    //     this.gameResult = "You Won!";
-    //     break;
-    //   }
-    //   case GameResult.COMPUTER_WINS: {
-    //     this.gameResult = "Computer won";
-    //     break;
-    //   }
-    //   case GameResult.REPLAY: {
-    //     this.gameResult = "Replay";
-    //     break;
-    //   }
-    // }
   }
 
-  replay(){
+  replay(): void {
     this.gameService.reset()
   }
 

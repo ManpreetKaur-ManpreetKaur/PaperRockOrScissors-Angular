@@ -6,7 +6,7 @@ import {OutputComponent} from "./output/output.component";
 const routes: Routes = [
   {path: 'input', component: InputComponent},
   {path: 'output', component: OutputComponent},
-  //{path: '', redirectTo: 'input', pathMatch: 'full'},
+  {path: '', redirectTo: 'input', pathMatch: 'full'},
   {path: '**', redirectTo: 'input'}
 ];
 
