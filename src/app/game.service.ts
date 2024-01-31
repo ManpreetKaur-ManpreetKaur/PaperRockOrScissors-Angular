@@ -19,11 +19,11 @@ export class GameService {
     return GameService.choices[Math.floor(3 * Math.random())]
   }
 
-  reset() {
+  reset(): void {
     this.gameData = new GameData(Choice.ROCK, Choice.ROCK);
   }
 
-  play(userChoice: Choice) {
+  play(userChoice: Choice): void {
     let computerChoice: Choice = GameService.getRandomChoice()
     this.gameData = new GameData(userChoice, computerChoice);
   }
